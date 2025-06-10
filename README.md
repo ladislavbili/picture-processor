@@ -1,3 +1,5 @@
+PS i am fully aware the password like that (location and all) is insane. use .env etc
+
 # picture-processor
 
 To install dependencies:
