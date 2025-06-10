@@ -1,0 +1,21 @@
+{
+  "name": "picture-processor",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bun build index.ts --outdir ./build  --sourcemap --minify --target bun",
+    "build:linux": "bun build --compile --bytecode --outfile ./build/my-app-linux --target bun-linux-x64-baseline --sourcemap ./index.ts",
+    "build:windows": "bun build --compile --bytecode --outfile ./build/my-app-windows --target bun-windows-x64 --sourcemap ./index.ts ",
+    "start": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "sharp": "^0.34.2"
+  }
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Image to Progressive JPG</title>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+                background-color: #f4f7f6;
+                color: #333;
+            }
+            h1 {
+                color: #2c3e50;
+            }
+            .info-box {
+                background-color: #eaf2f8;
+                border-left: 4px solid #3498db;
+                padding: 10px 15px;
+                margin-bottom: 20px;
+                font-size: 0.9em;
+            }
+            .info-box code {
+                background-color: #dfeaf2;
+                padding: 2px 4px;
+                border-radius: 3px;
+            }
+            .upload-area {
+                margin-bottom: 20px;
+            }
+            input[type='file'] {
+                border: 2px dashed #3498db;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #fff;
+            }
+            input[type='file']::file-selector-button {
+                background-color: #3498db;
+                color: white;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-right: 10px;
+            }
+            .controls {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin-bottom: 20px;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 800px;
+            }
+            .control-group {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .control-group label {
+                font-weight: bold;
+                color: #555;
+            }
+            .options-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: flex-start;
+            }
+            .options-group button {
+                padding: 8px 15px;
+                border: 1px solid #bdc3c7;
+                background-color: #fff;
+                color: #34495e;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.2s, color 0.2s;
+            }
+            .options-group button.selected {
+                background-color: #3498db;
+                color: #fff;
+                border-color: #3498db;
+            }
+            .options-group button:hover:not(.selected) {
+                background-color: #ecf0f1;
+            }
+            .container {
+                display: flex;
+                width: 100%;
+                max-width: 1200px;
+                gap: 20px;
+                margin-top: 10px;
+            }
+            .panel {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+            .panel h2 {
+                margin-top: 0;
+                color: #34495e;
+                font-size: 1.2em;
+            }
+            .panel img {
+                max-width: 100%;
+                max-height: 450px;
+                object-fit: contain;
+                border: 1px solid #ecf0f1;
+                margin-top: 10px;
+                border-radius: 4px;
+                background-color: #f8f9f9;
+            }
+            .download-btn {
+                padding: 10px 18px;
+                background-color: #2ecc71;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 15px;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+            .download-btn:hover {
+                background-color: #27ae60;
+            }
+            .hidden {
+                display: none !important;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Image to Progressive JPG Converter</h1>
+
+        <div class="upload-area">
+            <input
+                type="file"
+                id="imageUpload"
+                accept="image/jpeg,image/png,image/webp,image/gif,image/bmp"
+            />
+            <div style="margin-top: 15px">
+                <label
+                    for="passwordInput"
+                    style="display: block; margin-bottom: 5px; font-weight: bold; color: #555"
+                    >Password:</label
+                >
+                <input
+                    type="password"
+                    id="passwordInput"
+                    placeholder="Enter password to process images"
+                    style="
+                        padding: 10px;
+                        border: 2px solid #3498db;
+                        border-radius: 5px;
+                        width: 250px;
+                        font-size: 14px;
+                    "
+                    required
+                />
+            </div>
+        </div>
+
+        <div id="controlsArea" class="controls hidden">
+            <div class="control-group">
+                <label for="qualityOptions">Quality:</label>
+                <div class="options-group" id="qualityOptions"></div>
+            </div>
+            <div class="control-group">
+                <label for="sizeOptions">Max Size (fit into square):</label>
+                <div class="options-group" id="sizeOptions"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="panel">
+                <h2>Original Image</h2>
+                <img
+                    id="originalImage"
+                    src="#"
+                    alt="Original Image will appear here"
+                    class="hidden"
+                />
+            </div>
+            <div class="panel">
+                <h2>Processed Image</h2>
+                <img
+                    id="processedImage"
+                    src="#"
+                    alt="Processed Image will appear here"
+                    class="hidden"
+                />
+                <a id="downloadLink" class="download-btn hidden">Download Processed Image</a>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const imageUpload = document.getElementById('imageUpload');
+                const originalImageElement = document.getElementById('originalImage');
+                const processedImageElement = document.getElementById('processedImage');
+                const downloadLink = document.getElementById('downloadLink');
+                const qualityOptionsContainer = document.getElementById('qualityOptions');
+                const sizeOptionsContainer = document.getElementById('sizeOptions');
+                const controlsArea = document.getElementById('controlsArea');
+
+                let sourceImageObject = null; // This will be an HTMLImageElement
+                let currentQuality = 70; // Default quality
+                let currentSizeSetting = 'original'; // Default size
+                let customSizeValue = 500; // Default for custom prompt
+                let lastCustomSizeEntered = 500;
+
+                const qualityValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+                const sizeValues = [
+                    { label: '150px', value: '150' },
+                    { label: '300px', value: '300' },
+                    { label: '450px', value: '450' },
+                    { label: '600px', value: '600' },
+                    { label: '900px', value: '900' },
+                    { label: '1080px', value: '1080' },
+                    { label: 'Original', value: 'original' },
+                    { label: 'Custom', value: 'custom' },
+                ];
+
+                function populateOptions(container, options, currentSelection, type, clickHandler) {
+                    container.innerHTML = '';
+                    options.forEach((opt) => {
+                        const value = typeof opt === 'object' ? opt.value : opt;
+                        const label = typeof opt === 'object' ? opt.label : `${opt}`;
+                        const button = document.createElement('button');
+                        button.textContent = label;
+                        button.dataset.value = value;
+                        if (String(value) === String(currentSelection)) {
+                            button.classList.add('selected');
+                        }
+                        button.addEventListener('click', function () {
+                            clickHandler(value, button);
+                            Array.from(container.children).forEach((child) =>
+                                child.classList.remove('selected')
+                            );
+                            button.classList.add('selected');
+                        });
+                        container.appendChild(button);
+                    });
+                }
+
+                function handleQualityChange(value) {
+                    currentQuality = parseInt(value, 10);
+                    processAndDisplayImage();
+                }
+
+                function handleSizeChange(value, buttonElement) {
+                    if (value === 'custom') {
+                        const input = prompt(
+                            'Enter desired maximum square dimension (e.g., 150-2000):',
+                            lastCustomSizeEntered
+                        );
+                        if (input !== null) {
+                            const parsedSize = parseInt(input, 10);
+                            if (!isNaN(parsedSize) && parsedSize > 0) {
+                                currentSizeSetting = 'custom';
+                                customSizeValue = parsedSize;
+                                lastCustomSizeEntered = parsedSize;
+                                Array.from(sizeOptionsContainer.children).forEach((child) =>
+                                    child.classList.remove('selected')
+                                );
+                                buttonElement.classList.add('selected');
+                                processAndDisplayImage();
+                            } else {
+                                alert('Invalid size. Please enter a positive number.');
+                                populateOptions(
+                                    sizeOptionsContainer,
+                                    sizeValues,
+                                    currentSizeSetting,
+                                    'size',
+                                    handleSizeChange
+                                );
+                            }
+                        } else {
+                            populateOptions(
+                                sizeOptionsContainer,
+                                sizeValues,
+                                currentSizeSetting,
+                                'size',
+                                handleSizeChange
+                            );
+                        }
+                    } else {
+                        currentSizeSetting = value;
+                        processAndDisplayImage();
+                    }
+                }
+
+                populateOptions(
+                    qualityOptionsContainer,
+                    qualityValues,
+                    currentQuality,
+                    'quality',
+                    handleQualityChange
+                );
+                populateOptions(
+                    sizeOptionsContainer,
+                    sizeValues,
+                    currentSizeSetting,
+                    'size',
+                    handleSizeChange
+                );
+
+                imageUpload.addEventListener('change', function (event) {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        originalImageElement.src = e.target.result;
+                        originalImageElement.classList.remove('hidden');
+                        controlsArea.classList.remove('hidden');
+
+                        if (processedImageElement.src.startsWith('blob:')) {
+                            URL.revokeObjectURL(processedImageElement.src);
+                        }
+                        processedImageElement.classList.add('hidden');
+                        downloadLink.classList.add('hidden');
+
+                        sourceImageObject = new Image();
+                        sourceImageObject.onload = function () {
+                            currentQuality = parseInt(
+                                qualityOptionsContainer.querySelector('.selected')?.dataset.value ||
+                                    '70',
+                                10
+                            );
+                            currentSizeSetting =
+                                sizeOptionsContainer.querySelector('.selected')?.dataset.value ||
+                                'original';
+                            if (currentSizeSetting === 'custom' && !customSizeValue) {
+                                const initialCustomButton = sizeOptionsContainer.querySelector(
+                                    'button[data-value="custom"]'
+                                );
+                                handleSizeChange('custom', initialCustomButton);
+                            } else {
+                                processAndDisplayImage();
+                            }
+                        };
+                        sourceImageObject.onerror = function () {
+                            alert('Failed to load image. Please try another file.');
+                            originalImageElement.classList.add('hidden');
+                            controlsArea.classList.add('hidden');
+                            sourceImageObject = null;
+                        };
+                        sourceImageObject.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                });
+
+                function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+                    const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+                    return {
+                        width: Math.round(srcWidth * ratio),
+                        height: Math.round(srcHeight * ratio),
+                    };
+                }
+
+                async function processAndDisplayImage() {
+                    if (!sourceImageObject || !sourceImageObject.naturalWidth) {
+                        return;
+                    }
+
+                    const fileInput = document.getElementById('imageUpload');
+                    const passwordInput = document.getElementById('passwordInput');
+                    const selectedFile = fileInput.files[0];
+                    const password = passwordInput.value.trim();
+
+                    if (!selectedFile) {
+                        alert('No file selected');
+                        return;
+                    }
+
+                    if (!password) {
+                        alert('Password is required');
+                        passwordInput.focus();
+                        return;
+                    }
+
+                    let sizeValue;
+                    if (currentSizeSetting === 'original') {
+                        sizeValue = 'original';
+                    } else if (currentSizeSetting === 'custom') {
+                        sizeValue = customSizeValue.toString();
+                    } else {
+                        sizeValue = currentSizeSetting;
+                    }
+
+                    try {
+                        const formData = new FormData();
+                        formData.append('image', selectedFile);
+                        formData.append('quality', currentQuality.toString());
+                        formData.append('size', sizeValue);
+                        formData.append('password', password);
+
+                        console.log(
+                            `Processing image with quality: ${currentQuality}, size: ${sizeValue}`
+                        );
+
+                        const response = await fetch('/process-image', {
+                            method: 'POST',
+                            body: formData,
+                        });
+
+                        if (!response.ok) {
+                            const errorText = await response.text();
+                            if (response.status === 401) {
+                                alert(
+                                    'Invalid password. Please check your password and try again.'
+                                );
+                                passwordInput.focus();
+                                return;
+                            }
+                            throw new Error(`Server error: ${response.status} - ${errorText}`);
+                        }
+
+                        const processedImageBlob = await response.blob();
+
+                        if (processedImageElement.src.startsWith('blob:')) {
+                            URL.revokeObjectURL(processedImageElement.src);
+                        }
+
+                        const imageUrl = URL.createObjectURL(processedImageBlob);
+
+                        processedImageElement.src = imageUrl;
+                        processedImageElement.classList.remove('hidden');
+
+                        downloadLink.href = imageUrl;
+                        downloadLink.download = 'processed_progressive_image.jpg';
+                        downloadLink.classList.remove('hidden');
+                    } catch (error) {
+                        console.error('Error processing image:', error);
+                        alert('Error processing image: ' + error.message);
+                        processedImageElement.classList.add('hidden');
+                        downloadLink.classList.add('hidden');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
