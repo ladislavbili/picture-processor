@@ -1,7 +1,7 @@
 import { processImage } from './images';
 import page from './index.html' with { type: 'file' };
 
-const PASSWORD = 'I4mProgressive';
+const PASSWORD = 'send *icks';
 
 const server = Bun.serve({
     port: 8999,
