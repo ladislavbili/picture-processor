@@ -144,69 +144,371 @@
             .hidden {
                 display: none !important;
             }
+            .size-info {
+                margin-top: 8px;
+                font-size: 0.9em;
+                color: #555;
+            }
+            .top-right-controls {
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                z-index: 1000;
+            }
+            .password-reveal {
+                padding: 6px 10px;
+                border: 1px solid #bdc3c7;
+                border-radius: 4px;
+                background-color: #fff;
+                font-size: 14px;
+                width: 180px;
+                color: #34495e;
+            }
+            .reveal-toggle {
+                padding: 6px 10px;
+                border: 1px solid #bdc3c7;
+                border-radius: 4px;
+                background-color: #fff;
+                color: #34495e;
+                cursor: pointer;
+                font-size: 13px;
+            }
+            .reveal-toggle:hover {
+                background-color: #ecf0f1;
+            }
+            .reveal-toggle.selected {
+                background-color: #3498db;
+                color: #fff;
+                border-color: #3498db;
+            }
+            .auth-screen {
+                width: 100%;
+                max-width: 500px;
+                margin: 40px auto 0;
+            }
+            .auth-card {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .auth-error {
+                margin-top: 10px;
+                color: #c0392b;
+                font-size: 0.9em;
+            }
+            .multi-container {
+                width: 100%;
+                max-width: 1200px;
+                margin-top: 10px;
+            }
+            .multi-header {
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 10px;
+            }
+            .items-list {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .image-row {
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+                overflow: hidden;
+            }
+            .row-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 14px;
+                cursor: pointer;
+                user-select: none;
+            }
+            .row-header:hover {
+                background-color: #f8f9f9;
+            }
+            .row-thumb {
+                width: 56px;
+                height: 56px;
+                object-fit: cover;
+                border-radius: 4px;
+                border: 1px solid #ecf0f1;
+                background-color: #f8f9f9;
+                flex-shrink: 0;
+            }
+            .row-info {
+                flex: 1;
+                min-width: 0;
+            }
+            .row-name {
+                font-weight: bold;
+                color: #34495e;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .row-meta {
+                font-size: 0.85em;
+                color: #555;
+                margin-top: 2px;
+            }
+            .row-expand {
+                background: transparent;
+                border: none;
+                font-size: 18px;
+                color: #555;
+                cursor: pointer;
+                padding: 4px 8px;
+            }
+            .image-row.expanded .row-expand {
+                transform: rotate(180deg);
+            }
+            .row-body {
+                padding: 0 14px 14px;
+                border-top: 1px solid #ecf0f1;
+            }
+            .row-controls {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .row-status {
+                font-size: 0.85em;
+                color: #7f8c8d;
+                margin-left: 8px;
+            }
+            .preview-pair {
+                display: flex;
+                gap: 14px;
+                margin: 14px 0;
+                flex-wrap: wrap;
+            }
+            .preview-wrap {
+                flex: 1 1 280px;
+                min-width: 0;
+            }
+            .preview-heading {
+                margin: 0 0 6px;
+                font-size: 0.95em;
+                color: #34495e;
+            }
+            .preview-frame {
+                position: relative;
+                display: inline-block;
+                max-width: 100%;
+                background-color: #f8f9f9;
+                border: 1px solid #ecf0f1;
+                border-radius: 4px;
+                overflow: hidden;
+                line-height: 0;
+            }
+            .preview-frame.zoom-active {
+                cursor: crosshair;
+            }
+            .preview-img {
+                display: block;
+                max-width: 100%;
+                max-height: 320px;
+                width: auto;
+                height: auto;
+            }
+            .zoom-lens {
+                position: absolute;
+                width: 150px;
+                height: 150px;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+                pointer-events: none;
+                background-repeat: no-repeat;
+                background-color: #000;
+            }
+            .zoom-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 4px 0 12px;
+            }
+            .flag-toggle {
+                width: 60px;
+                height: 40px;
+                padding: 0;
+                border: 2px solid #bdc3c7;
+                border-radius: 4px;
+                background: transparent;
+                cursor: pointer;
+                overflow: hidden;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+            .flag-toggle:hover {
+                border-color: #34495e;
+            }
+            .flag-toggle.selected {
+                border-color: #2c3e50;
+                box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.3);
+            }
+            .flag-toggle svg {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            body.lang-cs {
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40' preserveAspectRatio='xMidYMid slice'><rect width='60' height='20' fill='%23ffffff'/><rect y='20' width='60' height='20' fill='%23d7141a'/><polygon points='0,0 30,20 0,40' fill='%2311457e'/></svg>");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                background-attachment: fixed;
+            }
         </style>
     </head>
     <body>
-        <h1>Image to Progressive JPG Converter</h1>
-
-        <div class="upload-area">
+        <div id="topRightControls" class="top-right-controls">
             <input
-                type="file"
-                id="imageUpload"
-                accept="image/jpeg,image/png,image/webp,image/gif,image/bmp"
+                type="text"
+                id="passwordReveal"
+                readonly
+                class="password-reveal hidden"
             />
-            <div style="margin-top: 15px">
+            <button
+                type="button"
+                id="togglePasswordReveal"
+                class="reveal-toggle hidden"
+            >
+                Show
+            </button>
+            <button
+                type="button"
+                id="languageToggle"
+                class="flag-toggle"
+                aria-label="Switch language"
+                title="Switch language"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40">
+                    <rect width="60" height="20" fill="#ffffff" />
+                    <rect y="20" width="60" height="20" fill="#d7141a" />
+                    <polygon points="0,0 30,20 0,40" fill="#11457e" />
+                </svg>
+            </button>
+        </div>
+
+        <h1 id="appTitle">Image to Progressive JPG Converter</h1>
+
+        <div id="authScreen" class="auth-screen hidden">
+            <div class="auth-card">
                 <label
                     for="passwordInput"
-                    style="display: block; margin-bottom: 5px; font-weight: bold; color: #555"
+                    id="passwordLabel"
+                    style="display: block; margin-bottom: 8px; font-weight: bold; color: #555"
                     >Password:</label
                 >
+                <div style="display: flex; align-items: center; gap: 8px">
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        placeholder="Enter password to process images"
+                        style="
+                            padding: 10px;
+                            border: 2px solid #3498db;
+                            border-radius: 5px;
+                            width: 250px;
+                            font-size: 14px;
+                        "
+                        required
+                    />
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        style="
+                            padding: 8px 12px;
+                            border: 1px solid #bdc3c7;
+                            background-color: #fff;
+                            color: #34495e;
+                            cursor: pointer;
+                            border-radius: 4px;
+                            font-size: 14px;
+                        "
+                    >
+                        Show
+                    </button>
+                    <button
+                        type="button"
+                        id="authSubmit"
+                        style="
+                            padding: 8px 16px;
+                            border: none;
+                            background-color: #3498db;
+                            color: #fff;
+                            cursor: pointer;
+                            border-radius: 4px;
+                            font-size: 14px;
+                        "
+                    >
+                        Enter
+                    </button>
+                </div>
+                <div id="authError" class="auth-error hidden"></div>
+            </div>
+        </div>
+
+        <div id="appContent" class="hidden">
+            <div class="upload-area">
                 <input
-                    type="password"
-                    id="passwordInput"
-                    placeholder="Enter password to process images"
-                    style="
-                        padding: 10px;
-                        border: 2px solid #3498db;
-                        border-radius: 5px;
-                        width: 250px;
-                        font-size: 14px;
-                    "
-                    required
+                    type="file"
+                    id="imageUpload"
+                    accept="image/jpeg,image/png,image/webp,image/gif,image/bmp"
+                    multiple
                 />
             </div>
-        </div>
 
-        <div id="controlsArea" class="controls hidden">
-            <div class="control-group">
-                <label for="qualityOptions">Quality:</label>
-                <div class="options-group" id="qualityOptions"></div>
+            <div id="controlsArea" class="controls hidden">
+                <div class="control-group">
+                    <label for="qualityOptions" id="qualityLabel">Quality:</label>
+                    <div class="options-group" id="qualityOptions"></div>
+                </div>
+                <div class="control-group">
+                    <label for="sizeOptions" id="sizeLabel">Max Size (fit into square):</label>
+                    <div class="options-group" id="sizeOptions"></div>
+                </div>
             </div>
-            <div class="control-group">
-                <label for="sizeOptions">Max Size (fit into square):</label>
-                <div class="options-group" id="sizeOptions"></div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="panel">
-                <h2>Original Image</h2>
-                <img
-                    id="originalImage"
-                    src="#"
-                    alt="Original Image will appear here"
-                    class="hidden"
-                />
+            <div id="multiContainer" class="multi-container hidden">
+                <div class="multi-header">
+                    <button id="downloadAllButton" type="button" class="download-btn">
+                        Download All
+                    </button>
+                </div>
+                <div id="itemsList" class="items-list"></div>
             </div>
-            <div class="panel">
-                <h2>Processed Image</h2>
-                <img
-                    id="processedImage"
-                    src="#"
-                    alt="Processed Image will appear here"
-                    class="hidden"
-                />
-                <a id="downloadLink" class="download-btn hidden">Download Processed Image</a>
+
+            <div id="singleContainer" class="container">
+                <div class="panel">
+                    <h2 id="originalHeading">Original Image</h2>
+                    <img
+                        id="originalImage"
+                        src="#"
+                        alt="Original Image will appear here"
+                        class="hidden"
+                    />
+                    <div id="originalSize" class="size-info hidden"></div>
+                    <div id="originalDimensions" class="size-info hidden"></div>
+                </div>
+                <div class="panel">
+                    <h2 id="processedHeading">Processed Image</h2>
+                    <img
+                        id="processedImage"
+                        src="#"
+                        alt="Processed Image will appear here"
+                        class="hidden"
+                    />
+                    <div id="processedSize" class="size-info hidden"></div>
+                    <div id="processedDimensions" class="size-info hidden"></div>
+                    <a id="downloadLink" class="download-btn hidden">Download Processed Image</a>
+                </div>
             </div>
         </div>
 
@@ -219,6 +521,301 @@
                 const qualityOptionsContainer = document.getElementById('qualityOptions');
                 const sizeOptionsContainer = document.getElementById('sizeOptions');
                 const controlsArea = document.getElementById('controlsArea');
+                const originalSizeElement = document.getElementById('originalSize');
+                const processedSizeElement = document.getElementById('processedSize');
+                const originalDimensionsElement = document.getElementById('originalDimensions');
+                const processedDimensionsElement = document.getElementById('processedDimensions');
+                const passwordInput = document.getElementById('passwordInput');
+                const togglePasswordButton = document.getElementById('togglePassword');
+                const languageToggleButton = document.getElementById('languageToggle');
+                const appTitleElement = document.getElementById('appTitle');
+                const passwordLabelElement = document.getElementById('passwordLabel');
+                const qualityLabelElement = document.getElementById('qualityLabel');
+                const sizeLabelElement = document.getElementById('sizeLabel');
+                const originalHeadingElement = document.getElementById('originalHeading');
+                const processedHeadingElement = document.getElementById('processedHeading');
+                const authScreen = document.getElementById('authScreen');
+                const appContent = document.getElementById('appContent');
+                const authSubmitButton = document.getElementById('authSubmit');
+                const authErrorElement = document.getElementById('authError');
+                const passwordRevealInput = document.getElementById('passwordReveal');
+                const togglePasswordRevealButton = document.getElementById('togglePasswordReveal');
+                const singleContainer = document.getElementById('singleContainer');
+                const multiContainer = document.getElementById('multiContainer');
+                const itemsListElement = document.getElementById('itemsList');
+                const downloadAllButton = document.getElementById('downloadAllButton');
+
+                let items = [];
+                let nextItemId = 1;
+
+                const i18n = {
+                    en: {
+                        title: 'Image to Progressive JPG Converter',
+                        passwordLabel: 'Password:',
+                        passwordPlaceholder: 'Enter password to process images',
+                        show: 'Show',
+                        hide: 'Hide',
+                        qualityLabel: 'Quality:',
+                        sizeLabel: 'Max Size (fit into square):',
+                        originalHeading: 'Original Image',
+                        processedHeading: 'Processed Image',
+                        downloadButton: 'Download Processed Image',
+                        originalOption: 'Original',
+                        qhdOption: 'QHD (2560px)',
+                        fourKOption: '4K (3840px)',
+                        customOption: 'Custom',
+                        sizePrefix: 'Size',
+                        dimensionsPrefix: 'Dimensions',
+                        customPrompt:
+                            'Enter desired maximum square dimension (e.g., 150-2000):',
+                        invalidSize: 'Invalid size. Please enter a positive number.',
+                        loadFail: 'Failed to load image. Please try another file.',
+                        noFile: 'No file selected',
+                        passwordRequired: 'Password is required',
+                        invalidPassword:
+                            'Invalid password. Please check your password and try again.',
+                        processError: 'Error processing image: ',
+                        submitButton: 'Enter',
+                        revealButton: 'Show password',
+                        hideRevealButton: 'Hide password',
+                        authError: 'Invalid password. Please try again.',
+                        downloadAll: 'Download All',
+                        statusProcessing: 'Processing…',
+                        statusReady: 'Ready',
+                        statusError: 'Error',
+                        zoomButton: 'Zoom',
+                        zoom4x: '4x',
+                        zoom10x: '10x',
+                        previewOriginal: 'Original',
+                        previewProcessed: 'Processed',
+                    },
+                    cs: {
+                        title: 'Převodník obrázků na progresivní JPG',
+                        passwordLabel: 'Heslo:',
+                        passwordPlaceholder: 'Zadejte heslo pro zpracování obrázků',
+                        show: 'Zobrazit',
+                        hide: 'Skrýt',
+                        qualityLabel: 'Kvalita:',
+                        sizeLabel: 'Max. velikost (vepsat do čtverce):',
+                        originalHeading: 'Původní obrázek',
+                        processedHeading: 'Zpracovaný obrázek',
+                        downloadButton: 'Stáhnout zpracovaný obrázek',
+                        originalOption: 'Původní',
+                        qhdOption: 'QHD (2560 px)',
+                        fourKOption: '4K (3840 px)',
+                        customOption: 'Vlastní',
+                        sizePrefix: 'Velikost',
+                        dimensionsPrefix: 'Rozměry',
+                        customPrompt:
+                            'Zadejte maximální rozměr čtverce (např. 150–2000):',
+                        invalidSize: 'Neplatná velikost. Zadejte kladné číslo.',
+                        loadFail:
+                            'Nepodařilo se načíst obrázek. Zkuste prosím jiný soubor.',
+                        noFile: 'Žádný soubor není vybrán',
+                        passwordRequired: 'Heslo je povinné',
+                        invalidPassword:
+                            'Neplatné heslo. Zkontrolujte heslo a zkuste to znovu.',
+                        processError: 'Chyba při zpracování obrázku: ',
+                        submitButton: 'Potvrdit',
+                        revealButton: 'Zobrazit heslo',
+                        hideRevealButton: 'Skrýt heslo',
+                        authError: 'Neplatné heslo. Zkuste to prosím znovu.',
+                        downloadAll: 'Stáhnout vše',
+                        statusProcessing: 'Zpracovává se…',
+                        statusReady: 'Hotovo',
+                        statusError: 'Chyba',
+                        zoomButton: 'Lupa',
+                        zoom4x: '4×',
+                        zoom10x: '10×',
+                        previewOriginal: 'Původní',
+                        previewProcessed: 'Zpracovaný',
+                    },
+                };
+                const LANG_STORAGE_KEY = 'picture-processor:lang';
+                let currentLang = localStorage.getItem(LANG_STORAGE_KEY) === 'cs' ? 'cs' : 'en';
+                let lastOriginalBytes = null;
+                let lastOriginalDims = null;
+                let lastProcessedBytes = null;
+                let lastProcessedDims = null;
+
+                function t() {
+                    return i18n[currentLang];
+                }
+
+                const PASSWORD_STORAGE_KEY = 'picture-processor:password';
+
+                togglePasswordButton.addEventListener('click', function () {
+                    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+                    updateTogglePasswordLabel();
+                });
+
+                function updateTogglePasswordLabel() {
+                    togglePasswordButton.textContent =
+                        passwordInput.type === 'password' ? t().show : t().hide;
+                }
+
+                togglePasswordRevealButton.addEventListener('click', function () {
+                    const showing = !passwordRevealInput.classList.contains('hidden');
+                    if (showing) {
+                        passwordRevealInput.classList.add('hidden');
+                        togglePasswordRevealButton.textContent = t().revealButton;
+                    } else {
+                        passwordRevealInput.value =
+                            localStorage.getItem(PASSWORD_STORAGE_KEY) || '';
+                        passwordRevealInput.classList.remove('hidden');
+                        togglePasswordRevealButton.textContent = t().hideRevealButton;
+                    }
+                });
+
+                async function validatePassword(pw) {
+                    const formData = new FormData();
+                    formData.append('password', pw);
+                    const response = await fetch('/check-password', {
+                        method: 'POST',
+                        body: formData,
+                    });
+                    return response.ok;
+                }
+
+                function showAuthScreen() {
+                    appContent.classList.add('hidden');
+                    authScreen.classList.remove('hidden');
+                    togglePasswordRevealButton.classList.add('hidden');
+                    passwordRevealInput.classList.add('hidden');
+                    passwordInput.focus();
+                }
+
+                function showAppContent() {
+                    authScreen.classList.add('hidden');
+                    appContent.classList.remove('hidden');
+                    togglePasswordRevealButton.classList.remove('hidden');
+                    togglePasswordRevealButton.textContent = t().revealButton;
+                    passwordRevealInput.classList.add('hidden');
+                    passwordRevealInput.value = '';
+                }
+
+                authSubmitButton.addEventListener('click', async function () {
+                    const pw = passwordInput.value;
+                    if (!pw) {
+                        authErrorElement.textContent = t().passwordRequired;
+                        authErrorElement.classList.remove('hidden');
+                        return;
+                    }
+                    const ok = await validatePassword(pw);
+                    if (ok) {
+                        localStorage.setItem(PASSWORD_STORAGE_KEY, pw);
+                        authErrorElement.classList.add('hidden');
+                        showAppContent();
+                    } else {
+                        authErrorElement.textContent = t().authError;
+                        authErrorElement.classList.remove('hidden');
+                    }
+                });
+
+                passwordInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        authSubmitButton.click();
+                    }
+                });
+
+                (async function bootstrapAuth() {
+                    const stored = localStorage.getItem(PASSWORD_STORAGE_KEY);
+                    if (stored) {
+                        const ok = await validatePassword(stored);
+                        if (ok) {
+                            showAppContent();
+                            return;
+                        }
+                        localStorage.removeItem(PASSWORD_STORAGE_KEY);
+                    }
+                    showAuthScreen();
+                })();
+
+                function formatBytes(bytes) {
+                    if (bytes < 1024) return `${bytes} B`;
+                    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+                    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+                }
+
+                function renderInfoLabels() {
+                    const tr = t();
+                    if (lastOriginalBytes !== null) {
+                        originalSizeElement.textContent =
+                            `${tr.sizePrefix}: ${formatBytes(lastOriginalBytes)}`;
+                    }
+                    if (lastOriginalDims) {
+                        originalDimensionsElement.textContent =
+                            `${tr.dimensionsPrefix}: ${lastOriginalDims.w} x ${lastOriginalDims.h}`;
+                    }
+                    if (lastProcessedBytes !== null) {
+                        processedSizeElement.textContent =
+                            `${tr.sizePrefix}: ${formatBytes(lastProcessedBytes)}`;
+                    }
+                    if (lastProcessedDims) {
+                        processedDimensionsElement.textContent =
+                            `${tr.dimensionsPrefix}: ${lastProcessedDims.w} x ${lastProcessedDims.h}`;
+                    }
+                }
+
+                function applyLanguage() {
+                    const tr = t();
+                    document.documentElement.lang = currentLang;
+                    appTitleElement.textContent = tr.title;
+                    document.title = tr.title;
+                    passwordLabelElement.textContent = tr.passwordLabel;
+                    passwordInput.placeholder = tr.passwordPlaceholder;
+                    qualityLabelElement.textContent = tr.qualityLabel;
+                    sizeLabelElement.textContent = tr.sizeLabel;
+                    originalHeadingElement.textContent = tr.originalHeading;
+                    processedHeadingElement.textContent = tr.processedHeading;
+                    downloadLink.textContent = tr.downloadButton;
+                    authSubmitButton.textContent = tr.submitButton;
+                    downloadAllButton.textContent = tr.downloadAll;
+                    togglePasswordRevealButton.textContent =
+                        passwordRevealInput.classList.contains('hidden')
+                            ? tr.revealButton
+                            : tr.hideRevealButton;
+                    updateTogglePasswordLabel();
+                    for (const item of items) {
+                        if (!item.row) continue;
+                        item.row.qualityLbl.textContent = tr.qualityLabel;
+                        item.row.sizeLbl.textContent = tr.sizeLabel;
+                        item.row.origPreview.heading.textContent = tr.previewOriginal;
+                        item.row.procPreview.heading.textContent = tr.previewProcessed;
+                        item.row.zoomBtn.textContent = tr.zoomButton;
+                        item.row.zoom4Btn.textContent = tr.zoom4x;
+                        item.row.zoom10Btn.textContent = tr.zoom10x;
+                        populateOptions(
+                            item.row.sizeOpts,
+                            getSizeValues(),
+                            item.detached ? item.sizeSetting : currentSizeSetting,
+                            'size',
+                            item.row.rowSizeHandler
+                        );
+                        updateRowMeta(item);
+                    }
+                    populateOptions(
+                        sizeOptionsContainer,
+                        getSizeValues(),
+                        currentSizeSetting,
+                        'size',
+                        handleSizeChange
+                    );
+                    renderInfoLabels();
+                    if (currentLang === 'cs') {
+                        document.body.classList.add('lang-cs');
+                        languageToggleButton.classList.add('selected');
+                    } else {
+                        document.body.classList.remove('lang-cs');
+                        languageToggleButton.classList.remove('selected');
+                    }
+                }
+
+                languageToggleButton.addEventListener('click', function () {
+                    currentLang = currentLang === 'en' ? 'cs' : 'en';
+                    localStorage.setItem(LANG_STORAGE_KEY, currentLang);
+                    applyLanguage();
+                });
 
                 let sourceImageObject = null; // This will be an HTMLImageElement
                 let currentQuality = 70; // Default quality
@@ -227,16 +824,26 @@
                 let lastCustomSizeEntered = 500;
 
                 const qualityValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-                const sizeValues = [
-                    { label: '150px', value: '150' },
-                    { label: '300px', value: '300' },
-                    { label: '450px', value: '450' },
-                    { label: '600px', value: '600' },
-                    { label: '900px', value: '900' },
-                    { label: '1080px', value: '1080' },
-                    { label: 'Original', value: 'original' },
-                    { label: 'Custom', value: 'custom' },
-                ];
+                function getSizeValues() {
+                    return [
+                        { label: '150px', value: '150' },
+                        { label: '300px', value: '300' },
+                        { label: '450px', value: '450' },
+                        { label: '600px', value: '600' },
+                        { label: '900px', value: '900' },
+                        { label: '1080px', value: '1080' },
+                        { label: t().originalOption, value: 'original' },
+                        { label: t().qhdOption, value: '2560' },
+                        { label: t().fourKOption, value: '3840' },
+                        { label: t().customOption, value: 'custom' },
+                    ];
+                }
+
+                function processedFilename(originalName) {
+                    const dot = originalName.lastIndexOf('.');
+                    const base = dot > 0 ? originalName.slice(0, dot) : originalName;
+                    return base + '.jpg';
+                }
 
                 function populateOptions(container, options, currentSelection, type, clickHandler) {
                     container.innerHTML = '';
@@ -260,17 +867,22 @@
                     });
                 }
 
+                function onGlobalSettingsChanged() {
+                    if (items.length > 1) {
+                        reprocessNonOverriddenItems();
+                    } else {
+                        processAndDisplayImage();
+                    }
+                }
+
                 function handleQualityChange(value) {
                     currentQuality = parseInt(value, 10);
-                    processAndDisplayImage();
+                    onGlobalSettingsChanged();
                 }
 
                 function handleSizeChange(value, buttonElement) {
                     if (value === 'custom') {
-                        const input = prompt(
-                            'Enter desired maximum square dimension (e.g., 150-2000):',
-                            lastCustomSizeEntered
-                        );
+                        const input = prompt(t().customPrompt, lastCustomSizeEntered);
                         if (input !== null) {
                             const parsedSize = parseInt(input, 10);
                             if (!isNaN(parsedSize) && parsedSize > 0) {
@@ -281,12 +893,12 @@
                                     child.classList.remove('selected')
                                 );
                                 buttonElement.classList.add('selected');
-                                processAndDisplayImage();
+                                onGlobalSettingsChanged();
                             } else {
-                                alert('Invalid size. Please enter a positive number.');
+                                alert(t().invalidSize);
                                 populateOptions(
                                     sizeOptionsContainer,
-                                    sizeValues,
+                                    getSizeValues(),
                                     currentSizeSetting,
                                     'size',
                                     handleSizeChange
@@ -295,7 +907,7 @@
                         } else {
                             populateOptions(
                                 sizeOptionsContainer,
-                                sizeValues,
+                                getSizeValues(),
                                 currentSizeSetting,
                                 'size',
                                 handleSizeChange
@@ -303,7 +915,7 @@
                         }
                     } else {
                         currentSizeSetting = value;
-                        processAndDisplayImage();
+                        onGlobalSettingsChanged();
                     }
                 }
 
@@ -316,15 +928,40 @@
                 );
                 populateOptions(
                     sizeOptionsContainer,
-                    sizeValues,
+                    getSizeValues(),
                     currentSizeSetting,
                     'size',
                     handleSizeChange
                 );
 
+                applyLanguage();
+
                 imageUpload.addEventListener('change', function (event) {
-                    const file = event.target.files[0];
-                    if (!file) return;
+                    const files = Array.from(event.target.files || []);
+                    if (files.length === 0) return;
+
+                    clearItems();
+
+                    if (files.length === 1) {
+                        enterSingleMode(files[0]);
+                    } else {
+                        enterMultiMode(files);
+                    }
+                });
+
+                function clearItems() {
+                    for (const item of items) {
+                        if (item.processedUrl) URL.revokeObjectURL(item.processedUrl);
+                        if (item.thumbUrl) URL.revokeObjectURL(item.thumbUrl);
+                        if (item.abortController) item.abortController.abort();
+                    }
+                    items = [];
+                    itemsListElement.innerHTML = '';
+                }
+
+                function enterSingleMode(file) {
+                    multiContainer.classList.add('hidden');
+                    singleContainer.classList.remove('hidden');
 
                     const reader = new FileReader();
                     reader.onload = function (e) {
@@ -332,22 +969,31 @@
                         originalImageElement.classList.remove('hidden');
                         controlsArea.classList.remove('hidden');
 
+                        lastOriginalBytes = file.size;
+                        lastOriginalDims = null;
+                        lastProcessedBytes = null;
+                        lastProcessedDims = null;
+                        renderInfoLabels();
+                        originalSizeElement.classList.remove('hidden');
+                        originalDimensionsElement.classList.add('hidden');
+
                         if (processedImageElement.src.startsWith('blob:')) {
                             URL.revokeObjectURL(processedImageElement.src);
                         }
                         processedImageElement.classList.add('hidden');
+                        processedSizeElement.classList.add('hidden');
+                        processedDimensionsElement.classList.add('hidden');
                         downloadLink.classList.add('hidden');
 
                         sourceImageObject = new Image();
                         sourceImageObject.onload = function () {
-                            currentQuality = parseInt(
-                                qualityOptionsContainer.querySelector('.selected')?.dataset.value ||
-                                    '70',
-                                10
-                            );
-                            currentSizeSetting =
-                                sizeOptionsContainer.querySelector('.selected')?.dataset.value ||
-                                'original';
+                            lastOriginalDims = {
+                                w: sourceImageObject.naturalWidth,
+                                h: sourceImageObject.naturalHeight,
+                            };
+                            renderInfoLabels();
+                            originalDimensionsElement.classList.remove('hidden');
+
                             if (currentSizeSetting === 'custom' && !customSizeValue) {
                                 const initialCustomButton = sizeOptionsContainer.querySelector(
                                     'button[data-value="custom"]'
@@ -358,7 +1004,7 @@
                             }
                         };
                         sourceImageObject.onerror = function () {
-                            alert('Failed to load image. Please try another file.');
+                            alert(t().loadFail);
                             originalImageElement.classList.add('hidden');
                             controlsArea.classList.add('hidden');
                             sourceImageObject = null;
@@ -366,6 +1012,600 @@
                         sourceImageObject.src = e.target.result;
                     };
                     reader.readAsDataURL(file);
+                }
+
+                function enterMultiMode(files) {
+                    singleContainer.classList.add('hidden');
+                    controlsArea.classList.remove('hidden');
+                    multiContainer.classList.remove('hidden');
+
+                    const usedNames = new Map();
+                    for (const file of files) {
+                        const item = {
+                            id: nextItemId++,
+                            file,
+                            thumbUrl: URL.createObjectURL(file),
+                            detached: false,
+                            quality: currentQuality,
+                            sizeSetting: currentSizeSetting,
+                            customSizeValue: customSizeValue,
+                            processedBlob: null,
+                            processedUrl: null,
+                            processedDims: null,
+                            originalDims: null,
+                            seq: 0,
+                            abortController: null,
+                            expanded: false,
+                            row: null,
+                            downloadName: uniqueDownloadName(file.name, usedNames),
+                            zoomActive: false,
+                            zoomLevel: 4,
+                            zoomRatio: null,
+                        };
+                        items.push(item);
+                        renderItemRow(item);
+                        loadOriginalDims(item);
+                        processItem(item);
+                    }
+                }
+
+                function uniqueDownloadName(originalName, usedNames) {
+                    const dot = originalName.lastIndexOf('.');
+                    const base = dot > 0 ? originalName.slice(0, dot) : originalName;
+                    let candidate = base + '.jpg';
+                    let n = 2;
+                    while (usedNames.has(candidate.toLowerCase())) {
+                        candidate = `${base} (${n}).jpg`;
+                        n++;
+                    }
+                    usedNames.set(candidate.toLowerCase(), true);
+                    return candidate;
+                }
+
+                function loadOriginalDims(item) {
+                    const probe = new Image();
+                    probe.onload = function () {
+                        item.originalDims = { w: probe.naturalWidth, h: probe.naturalHeight };
+                        updateRowMeta(item);
+                    };
+                    probe.src = item.thumbUrl;
+                }
+
+                function effectiveSettings(item) {
+                    if (item.detached) {
+                        return {
+                            quality: item.quality,
+                            sizeSetting: item.sizeSetting,
+                            customSizeValue: item.customSizeValue,
+                        };
+                    }
+                    return {
+                        quality: currentQuality,
+                        sizeSetting: currentSizeSetting,
+                        customSizeValue: customSizeValue,
+                    };
+                }
+
+                function resolvedSizeValue(s) {
+                    if (s.sizeSetting === 'original') return 'original';
+                    if (s.sizeSetting === 'custom') return String(s.customSizeValue);
+                    return String(s.sizeSetting);
+                }
+
+                async function processItem(item) {
+                    const password = (localStorage.getItem(PASSWORD_STORAGE_KEY) || '').trim();
+                    if (!password) {
+                        showAuthScreen();
+                        return;
+                    }
+                    const settings = effectiveSettings(item);
+                    const sizeValue = resolvedSizeValue(settings);
+
+                    item.seq++;
+                    const mySeq = item.seq;
+                    if (item.abortController) item.abortController.abort();
+                    item.abortController = new AbortController();
+
+                    setRowStatus(item, t().statusProcessing);
+
+                    try {
+                        const formData = new FormData();
+                        formData.append('image', item.file);
+                        formData.append('quality', String(settings.quality));
+                        formData.append('size', sizeValue);
+                        formData.append('password', password);
+
+                        const response = await fetch('/process-image', {
+                            method: 'POST',
+                            body: formData,
+                            signal: item.abortController.signal,
+                        });
+
+                        if (mySeq !== item.seq) return;
+
+                        if (!response.ok) {
+                            if (response.status === 401) {
+                                localStorage.removeItem(PASSWORD_STORAGE_KEY);
+                                showAuthScreen();
+                                return;
+                            }
+                            setRowStatus(item, t().statusError);
+                            return;
+                        }
+
+                        const blob = await response.blob();
+                        if (mySeq !== item.seq) return;
+
+                        if (item.processedUrl) URL.revokeObjectURL(item.processedUrl);
+                        item.processedBlob = blob;
+                        item.processedUrl = URL.createObjectURL(blob);
+
+                        const probe = new Image();
+                        probe.onload = function () {
+                            if (mySeq !== item.seq) return;
+                            item.processedDims = {
+                                w: probe.naturalWidth,
+                                h: probe.naturalHeight,
+                            };
+                            updateRowMeta(item);
+                            setRowStatus(item, t().statusReady);
+                        };
+                        probe.src = item.processedUrl;
+                    } catch (err) {
+                        if (err.name === 'AbortError') return;
+                        console.error(err);
+                        setRowStatus(item, t().statusError);
+                    }
+                }
+
+                function reprocessNonOverriddenItems() {
+                    for (const item of items) {
+                        if (item.detached) continue;
+                        item.quality = currentQuality;
+                        item.sizeSetting = currentSizeSetting;
+                        item.customSizeValue = customSizeValue;
+                        syncRowSelectionToGlobals(item);
+                        processItem(item);
+                    }
+                }
+
+                function syncRowSelectionToGlobals(item) {
+                    if (!item.row) return;
+                    const qOpts = item.row.qualityOpts;
+                    const sOpts = item.row.sizeOpts;
+                    if (qOpts) {
+                        Array.from(qOpts.children).forEach((b) =>
+                            b.classList.toggle(
+                                'selected',
+                                String(b.dataset.value) === String(currentQuality)
+                            )
+                        );
+                    }
+                    if (sOpts) {
+                        Array.from(sOpts.children).forEach((b) =>
+                            b.classList.toggle(
+                                'selected',
+                                String(b.dataset.value) === String(currentSizeSetting)
+                            )
+                        );
+                    }
+                }
+
+                function renderItemRow(item) {
+                    const row = document.createElement('div');
+                    row.className = 'image-row';
+
+                    const header = document.createElement('div');
+                    header.className = 'row-header';
+
+                    const thumb = document.createElement('img');
+                    thumb.className = 'row-thumb';
+                    thumb.src = item.thumbUrl;
+                    header.appendChild(thumb);
+
+                    const info = document.createElement('div');
+                    info.className = 'row-info';
+                    const name = document.createElement('div');
+                    name.className = 'row-name';
+                    name.textContent = item.file.name;
+                    const meta = document.createElement('div');
+                    meta.className = 'row-meta';
+                    info.appendChild(name);
+                    info.appendChild(meta);
+                    header.appendChild(info);
+
+                    const status = document.createElement('span');
+                    status.className = 'row-status';
+                    header.appendChild(status);
+
+                    const expand = document.createElement('button');
+                    expand.className = 'row-expand';
+                    expand.type = 'button';
+                    expand.textContent = '▼';
+                    header.appendChild(expand);
+
+                    const body = document.createElement('div');
+                    body.className = 'row-body hidden';
+
+                    // Before/after previews
+                    const previewPair = document.createElement('div');
+                    previewPair.className = 'preview-pair';
+
+                    function buildPreview(headingText) {
+                        const wrap = document.createElement('div');
+                        wrap.className = 'preview-wrap';
+                        const h = document.createElement('h3');
+                        h.className = 'preview-heading';
+                        h.textContent = headingText;
+                        const frame = document.createElement('div');
+                        frame.className = 'preview-frame';
+                        const img = document.createElement('img');
+                        img.className = 'preview-img';
+                        img.loading = 'lazy';
+                        const lens = document.createElement('div');
+                        lens.className = 'zoom-lens hidden';
+                        frame.appendChild(img);
+                        frame.appendChild(lens);
+                        const sizeInfo = document.createElement('div');
+                        sizeInfo.className = 'size-info hidden';
+                        const dimsInfo = document.createElement('div');
+                        dimsInfo.className = 'size-info hidden';
+                        wrap.appendChild(h);
+                        wrap.appendChild(frame);
+                        wrap.appendChild(sizeInfo);
+                        wrap.appendChild(dimsInfo);
+                        return { wrap, frame, img, lens, heading: h, sizeInfo, dimsInfo };
+                    }
+
+                    const origPreview = buildPreview(t().previewOriginal);
+                    const procPreview = buildPreview(t().previewProcessed);
+                    origPreview.img.src = item.thumbUrl;
+                    if (item.processedUrl) procPreview.img.src = item.processedUrl;
+
+                    const rowDownload = document.createElement('a');
+                    rowDownload.className = 'download-btn';
+                    rowDownload.textContent = t().downloadButton;
+                    if (item.processedUrl) {
+                        rowDownload.href = item.processedUrl;
+                        rowDownload.download = item.downloadName;
+                    } else {
+                        rowDownload.classList.add('hidden');
+                    }
+                    procPreview.wrap.appendChild(rowDownload);
+
+                    previewPair.appendChild(origPreview.wrap);
+                    previewPair.appendChild(procPreview.wrap);
+                    body.appendChild(previewPair);
+
+                    // Zoom controls
+                    const zoomControls = document.createElement('div');
+                    zoomControls.className = 'zoom-controls';
+                    const zoomBtn = document.createElement('button');
+                    zoomBtn.type = 'button';
+                    zoomBtn.textContent = t().zoomButton;
+                    zoomBtn.className = 'reveal-toggle';
+                    const zoom4Btn = document.createElement('button');
+                    zoom4Btn.type = 'button';
+                    zoom4Btn.textContent = t().zoom4x;
+                    zoom4Btn.className = 'reveal-toggle';
+                    const zoom10Btn = document.createElement('button');
+                    zoom10Btn.type = 'button';
+                    zoom10Btn.textContent = t().zoom10x;
+                    zoom10Btn.className = 'reveal-toggle';
+                    zoomControls.appendChild(zoomBtn);
+                    zoomControls.appendChild(zoom4Btn);
+                    zoomControls.appendChild(zoom10Btn);
+                    body.appendChild(zoomControls);
+
+                    function updateZoomButtonStyles() {
+                        zoomBtn.classList.toggle('selected', item.zoomActive);
+                        zoom4Btn.classList.toggle(
+                            'selected',
+                            item.zoomActive && item.zoomLevel === 4
+                        );
+                        zoom10Btn.classList.toggle(
+                            'selected',
+                            item.zoomActive && item.zoomLevel === 10
+                        );
+                        origPreview.frame.classList.toggle('zoom-active', item.zoomActive);
+                        procPreview.frame.classList.toggle('zoom-active', item.zoomActive);
+                        if (!item.zoomActive) {
+                            origPreview.lens.classList.add('hidden');
+                            procPreview.lens.classList.add('hidden');
+                        }
+                    }
+
+                    function renderLenses() {
+                        if (!item.zoomActive || !item.zoomRatio) {
+                            origPreview.lens.classList.add('hidden');
+                            procPreview.lens.classList.add('hidden');
+                            return;
+                        }
+                        renderLens(origPreview, item.thumbUrl, item.zoomRatio, item.zoomLevel);
+                        if (item.processedUrl) {
+                            renderLens(
+                                procPreview,
+                                item.processedUrl,
+                                item.zoomRatio,
+                                item.zoomLevel
+                            );
+                        } else {
+                            procPreview.lens.classList.add('hidden');
+                        }
+                    }
+
+                    function handleFrameClick(e, preview) {
+                        if (!item.zoomActive) return;
+                        const rect = preview.img.getBoundingClientRect();
+                        if (rect.width === 0 || rect.height === 0) return;
+                        const rx = (e.clientX - rect.left) / rect.width;
+                        const ry = (e.clientY - rect.top) / rect.height;
+                        item.zoomRatio = {
+                            rx: Math.max(0, Math.min(1, rx)),
+                            ry: Math.max(0, Math.min(1, ry)),
+                        };
+                        renderLenses();
+                    }
+
+                    origPreview.frame.addEventListener('click', function (e) {
+                        handleFrameClick(e, origPreview);
+                    });
+                    procPreview.frame.addEventListener('click', function (e) {
+                        handleFrameClick(e, procPreview);
+                    });
+
+                    zoomBtn.addEventListener('click', function () {
+                        item.zoomActive = !item.zoomActive;
+                        if (!item.zoomActive) item.zoomRatio = null;
+                        updateZoomButtonStyles();
+                        renderLenses();
+                    });
+                    zoom4Btn.addEventListener('click', function () {
+                        item.zoomActive = true;
+                        item.zoomLevel = 4;
+                        updateZoomButtonStyles();
+                        renderLenses();
+                    });
+                    zoom10Btn.addEventListener('click', function () {
+                        item.zoomActive = true;
+                        item.zoomLevel = 10;
+                        updateZoomButtonStyles();
+                        renderLenses();
+                    });
+
+                    updateZoomButtonStyles();
+
+                    // Per-row quality/size controls (auto-detach on change)
+                    const controls = document.createElement('div');
+                    controls.className = 'row-controls';
+
+                    const qualityGroup = document.createElement('div');
+                    qualityGroup.className = 'control-group';
+                    const qualityLbl = document.createElement('label');
+                    qualityLbl.textContent = t().qualityLabel;
+                    const qualityOpts = document.createElement('div');
+                    qualityOpts.className = 'options-group';
+                    qualityGroup.appendChild(qualityLbl);
+                    qualityGroup.appendChild(qualityOpts);
+                    controls.appendChild(qualityGroup);
+
+                    const sizeGroup = document.createElement('div');
+                    sizeGroup.className = 'control-group';
+                    const sizeLbl = document.createElement('label');
+                    sizeLbl.textContent = t().sizeLabel;
+                    const sizeOpts = document.createElement('div');
+                    sizeOpts.className = 'options-group';
+                    sizeGroup.appendChild(sizeLbl);
+                    sizeGroup.appendChild(sizeOpts);
+                    controls.appendChild(sizeGroup);
+
+                    body.appendChild(controls);
+
+                    populateOptions(
+                        qualityOpts,
+                        qualityValues,
+                        item.detached ? item.quality : currentQuality,
+                        'quality',
+                        function (value) {
+                            item.quality = parseInt(value, 10);
+                            item.detached = true;
+                            processItem(item);
+                        }
+                    );
+
+                    function rowSizeHandler(value, buttonElement) {
+                        if (value === 'custom') {
+                            const input = prompt(
+                                t().customPrompt,
+                                item.customSizeValue || lastCustomSizeEntered
+                            );
+                            if (input !== null) {
+                                const parsed = parseInt(input, 10);
+                                if (!isNaN(parsed) && parsed > 0) {
+                                    item.sizeSetting = 'custom';
+                                    item.customSizeValue = parsed;
+                                    item.detached = true;
+                                    Array.from(sizeOpts.children).forEach((c) =>
+                                        c.classList.remove('selected')
+                                    );
+                                    buttonElement.classList.add('selected');
+                                    processItem(item);
+                                } else {
+                                    alert(t().invalidSize);
+                                    populateOptions(
+                                        sizeOpts,
+                                        getSizeValues(),
+                                        item.detached ? item.sizeSetting : currentSizeSetting,
+                                        'size',
+                                        rowSizeHandler
+                                    );
+                                }
+                            } else {
+                                populateOptions(
+                                    sizeOpts,
+                                    getSizeValues(),
+                                    item.detached ? item.sizeSetting : currentSizeSetting,
+                                    'size',
+                                    rowSizeHandler
+                                );
+                            }
+                        } else {
+                            item.sizeSetting = value;
+                            item.detached = true;
+                            processItem(item);
+                        }
+                    }
+
+                    populateOptions(
+                        sizeOpts,
+                        getSizeValues(),
+                        item.detached ? item.sizeSetting : currentSizeSetting,
+                        'size',
+                        rowSizeHandler
+                    );
+
+                    header.addEventListener('click', function () {
+                        item.expanded = !item.expanded;
+                        row.classList.toggle('expanded', item.expanded);
+                        body.classList.toggle('hidden', !item.expanded);
+                    });
+
+                    row.appendChild(header);
+                    row.appendChild(body);
+
+                    item.row = {
+                        root: row,
+                        thumb,
+                        meta,
+                        status,
+                        qualityLbl,
+                        sizeLbl,
+                        qualityOpts,
+                        sizeOpts,
+                        origPreview,
+                        procPreview,
+                        zoomBtn,
+                        zoom4Btn,
+                        zoom10Btn,
+                        renderLenses,
+                        updateZoomButtonStyles,
+                        rowSizeHandler,
+                        rowDownload,
+                    };
+
+                    itemsListElement.appendChild(row);
+                    updateRowMeta(item);
+                }
+
+                function setRowStatus(item, text) {
+                    if (item.row) item.row.status.textContent = text;
+                }
+
+                function renderLens(preview, src, ratio, level) {
+                    const dispW = preview.img.clientWidth;
+                    const dispH = preview.img.clientHeight;
+                    if (dispW === 0 || dispH === 0) {
+                        preview.lens.classList.add('hidden');
+                        return;
+                    }
+                    const cx = ratio.rx * dispW;
+                    const cy = ratio.ry * dispH;
+                    const lensSize = preview.lens.offsetWidth || 150;
+                    const half = lensSize / 2;
+                    preview.lens.style.left = preview.img.offsetLeft + cx - half + 'px';
+                    preview.lens.style.top = preview.img.offsetTop + cy - half + 'px';
+                    preview.lens.style.backgroundImage = `url("${src}")`;
+                    preview.lens.style.backgroundSize =
+                        dispW * level + 'px ' + dispH * level + 'px';
+                    preview.lens.style.backgroundPosition =
+                        -(cx * level - half) + 'px ' + -(cy * level - half) + 'px';
+                    preview.lens.classList.remove('hidden');
+                }
+
+                function updateRowMeta(item) {
+                    if (!item.row) return;
+                    const tr = t();
+                    const parts = [];
+                    parts.push(`${tr.sizePrefix}: ${formatBytes(item.file.size)}`);
+                    if (item.originalDims) {
+                        parts.push(
+                            `${item.originalDims.w} x ${item.originalDims.h}`
+                        );
+                    }
+                    if (item.processedBlob) {
+                        parts.push(
+                            `→ ${formatBytes(item.processedBlob.size)}`
+                        );
+                        if (item.processedDims) {
+                            parts.push(
+                                `${item.processedDims.w} x ${item.processedDims.h}`
+                            );
+                        }
+                    }
+                    item.row.meta.textContent = parts.join(' · ');
+                    if (item.processedUrl) {
+                        item.row.thumb.src = item.processedUrl;
+                        if (item.row.procPreview) {
+                            item.row.procPreview.img.src = item.processedUrl;
+                        }
+                    }
+
+                    const orig = item.row.origPreview;
+                    orig.sizeInfo.textContent =
+                        `${tr.sizePrefix}: ${formatBytes(item.file.size)}`;
+                    orig.sizeInfo.classList.remove('hidden');
+                    if (item.originalDims) {
+                        orig.dimsInfo.textContent =
+                            `${tr.dimensionsPrefix}: ${item.originalDims.w} x ${item.originalDims.h}`;
+                        orig.dimsInfo.classList.remove('hidden');
+                    } else {
+                        orig.dimsInfo.classList.add('hidden');
+                    }
+
+                    const proc = item.row.procPreview;
+                    if (item.processedBlob) {
+                        proc.sizeInfo.textContent =
+                            `${tr.sizePrefix}: ${formatBytes(item.processedBlob.size)}`;
+                        proc.sizeInfo.classList.remove('hidden');
+                    } else {
+                        proc.sizeInfo.classList.add('hidden');
+                    }
+                    if (item.processedDims) {
+                        proc.dimsInfo.textContent =
+                            `${tr.dimensionsPrefix}: ${item.processedDims.w} x ${item.processedDims.h}`;
+                        proc.dimsInfo.classList.remove('hidden');
+                    } else {
+                        proc.dimsInfo.classList.add('hidden');
+                    }
+
+                    if (item.row.rowDownload) {
+                        if (item.processedUrl) {
+                            item.row.rowDownload.href = item.processedUrl;
+                            item.row.rowDownload.download = item.downloadName;
+                            item.row.rowDownload.textContent = tr.downloadButton;
+                            item.row.rowDownload.classList.remove('hidden');
+                        } else {
+                            item.row.rowDownload.classList.add('hidden');
+                        }
+                    }
+
+                    if (item.row.renderLenses) item.row.renderLenses();
+                }
+
+                downloadAllButton.addEventListener('click', function () {
+                    let i = 0;
+                    for (const item of items) {
+                        if (!item.processedBlob || !item.processedUrl) continue;
+                        const a = document.createElement('a');
+                        a.href = item.processedUrl;
+                        a.download = item.downloadName;
+                        document.body.appendChild(a);
+                        setTimeout(function () {
+                            a.click();
+                            a.remove();
+                        }, i * 150);
+                        i++;
+                    }
                 });
 
                 function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
@@ -381,19 +1621,17 @@
                         return;
                     }
 
-                    const fileInput = document.getElementById('imageUpload');
-                    const passwordInput = document.getElementById('passwordInput');
-                    const selectedFile = fileInput.files[0];
-                    const password = passwordInput.value.trim();
+                    const selectedFile = imageUpload.files[0];
+                    const password = (localStorage.getItem(PASSWORD_STORAGE_KEY) || '').trim();
 
                     if (!selectedFile) {
-                        alert('No file selected');
+                        alert(t().noFile);
                         return;
                     }
 
                     if (!password) {
-                        alert('Password is required');
-                        passwordInput.focus();
+                        alert(t().passwordRequired);
+                        showAuthScreen();
                         return;
                     }
 
@@ -425,10 +1663,9 @@
                         if (!response.ok) {
                             const errorText = await response.text();
                             if (response.status === 401) {
-                                alert(
-                                    'Invalid password. Please check your password and try again.'
-                                );
-                                passwordInput.focus();
+                                alert(t().invalidPassword);
+                                localStorage.removeItem(PASSWORD_STORAGE_KEY);
+                                showAuthScreen();
                                 return;
                             }
                             throw new Error(`Server error: ${response.status} - ${errorText}`);
@@ -445,13 +1682,30 @@
                         processedImageElement.src = imageUrl;
                         processedImageElement.classList.remove('hidden');
 
+                        const dimensionsProbe = new Image();
+                        dimensionsProbe.onload = function () {
+                            lastProcessedDims = {
+                                w: dimensionsProbe.naturalWidth,
+                                h: dimensionsProbe.naturalHeight,
+                            };
+                            renderInfoLabels();
+                            processedDimensionsElement.classList.remove('hidden');
+                        };
+                        dimensionsProbe.src = imageUrl;
+
+                        lastProcessedBytes = processedImageBlob.size;
+                        renderInfoLabels();
+                        processedSizeElement.classList.remove('hidden');
+
                         downloadLink.href = imageUrl;
-                        downloadLink.download = 'processed_progressive_image.jpg';
+                        downloadLink.download = processedFilename(selectedFile.name);
                         downloadLink.classList.remove('hidden');
                     } catch (error) {
                         console.error('Error processing image:', error);
-                        alert('Error processing image: ' + error.message);
+                        alert(t().processError + error.message);
                         processedImageElement.classList.add('hidden');
+                        processedSizeElement.classList.add('hidden');
+                        processedDimensionsElement.classList.add('hidden');
                         downloadLink.classList.add('hidden');
                     }
                 }

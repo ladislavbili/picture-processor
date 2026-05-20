@@ -1,5 +1,7 @@
 import { processImage } from './images';
-import page from "./index.html" with { type: "file" };
+import page from './index.html' with { type: 'file' };
+
+const PASSWORD = 'I4mProgressive';
 
 const server = Bun.serve({
     port: 8999,
@@ -14,6 +16,20 @@ const server = Bun.serve({
             });
         }
 
+        // Password validation endpoint
+        if (url.pathname === '/check-password' && req.method === 'POST') {
+            try {
+                const formData = await req.formData();
+                const password = formData.get('password') as string;
+                if (password === PASSWORD) {
+                    return new Response('OK', { status: 200 });
+                }
+                return new Response('Invalid password', { status: 401 });
+            } catch (error) {
+                return new Response('Error checking password', { status: 500 });
+            }
+        }
+
         // Handle image processing endpoint
         if (url.pathname === '/process-image' && req.method === 'POST') {
             try {
@@ -24,7 +40,7 @@ const server = Bun.serve({
                 const password = formData.get('password') as string;
 
                 // Check password first
-                if (password !== 'Send picks') {
+                if (password !== PASSWORD) {
                     return new Response('Invalid password', { status: 401 });
                 }
 
@@ -44,11 +60,15 @@ const server = Bun.serve({
 
                 const processedBuffer = await processImage(imageBuffer, quality, size);
 
+                const originalName = imageFile.name;
+                const dot = originalName.lastIndexOf('.');
+                const baseName = dot > 0 ? originalName.slice(0, dot) : originalName;
+                const downloadName = baseName + '.jpg';
+
                 return new Response(processedBuffer, {
                     headers: {
                         'Content-Type': 'image/jpeg',
-                        'Content-Disposition':
-                            'attachment; filename="processed_progressive_image.jpg"',
+                        'Content-Disposition': `attachment; filename="${downloadName}"`,
                     },
                 });
             } catch (error) {
